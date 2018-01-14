@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 
 class BlogPost(models.Model):
-    # id -> numbers
+    # pk -> numbers
     user        = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE) #
     title       = models.CharField(max_length=120, null=True, blank=True)
     content     = models.TextField(max_length=120, null=True, blank=True)

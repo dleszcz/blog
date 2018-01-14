@@ -1,10 +1,11 @@
 from django.db.models import Q
 from rest_framework import generics, mixins
-from .serializers import BlogPostSerializer
 from postings.models import BlogPost
+from .serializers import BlogPostSerializer
+from .permissions import IsOwnerOrReadOnly
 
 class BlogPostAPIView(mixins.CreateModelMixin, generics.ListAPIView):
-    lookup_field            = 'id'
+    lookup_field            = 'pk'
     serializer_class = BlogPostSerializer
     #queryset = BlogPost.objects.all()
 
@@ -27,12 +28,13 @@ class BlogPostAPIView(mixins.CreateModelMixin, generics.ListAPIView):
 
 
 class BlogPostRudView(generics.RetrieveUpdateDestroyAPIView):
-    lookup_field            = 'id'
+    lookup_field            = 'pk'
     serializer_class = BlogPostSerializer
+    permission_classes = [IsOwnerOrReadOnly]
 
     def get_queryset(self):
         return BlogPost.objects.all()
 
     # def get_object(self):
-    #     id = self.kwargs.get("id")
-    #     return BlogPost.objects.get(id=id)
+    #     pk = self.kwargs.get("pk")
+    #     return BlogPost.objects.get(pk=pk)

@@ -5,14 +5,14 @@ class BlogPostSerializer(serializers.ModelSerializer): #forms.ModelForm
     class Meta:
         model = BlogPost
         fields = [
-            'id',
+            'pk',
             'user',
             'title',
             'content',
             'timestamp',
         ]
 
-        read_only_fields = ['id', 'user']
+        read_only_fields = ['user']
 
     # converts to JSON
     # validations for data passed
@@ -20,7 +20,7 @@ class BlogPostSerializer(serializers.ModelSerializer): #forms.ModelForm
     def validate_title(self, value):
         qs = BlogPost.objects.filter(title__iexact=value)
         if self.instance:
-            qs = qs.exclude(id=self.instance.id)
+            qs = qs.exclude(pk=self.instance.id)
         if qs.exists():
             raise serializers.ValidationError("This title has already been used")
         return value
