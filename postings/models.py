@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 
 class BlogPost(models.Model):
-    # pk -> numbers
+    # id -> numbers
     user        = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE) #
     title       = models.CharField(max_length=120, null=True, blank=True)
     content     = models.TextField(max_length=120, null=True, blank=True)
@@ -10,3 +10,7 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return str(self.user.username)
+
+    @property
+    def owner(self):
+        return self.user
