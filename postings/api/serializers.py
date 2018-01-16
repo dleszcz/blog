@@ -7,14 +7,14 @@ class BlogPostSerializer(serializers.ModelSerializer):
         model = BlogPost
         fields = [
             'url',
-            'pk',
+            'id',
             'user',
             'title',
             'content',
             'timestamp',
         ]
 
-        read_only_fields = ['user']
+        read_only_fields = ['id', 'user']
 
     def get_url(self, obj):
         request = self.context.get("request")
