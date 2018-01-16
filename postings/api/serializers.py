@@ -1,10 +1,12 @@
 from rest_framework import serializers
 from postings.models import BlogPost
 
-class BlogPostSerializer(serializers.ModelSerializer): #forms.ModelForm
+class BlogPostSerializer(serializers.ModelSerializer):
+    url = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = BlogPost
         fields = [
+            'url',
             'pk',
             'user',
             'title',
@@ -14,8 +16,9 @@ class BlogPostSerializer(serializers.ModelSerializer): #forms.ModelForm
 
         read_only_fields = ['user']
 
-    # converts to JSON
-    # validations for data passed
+    def get_url(self, obj):
+        request = self.context.get("request")
+        return obj.get_api_url(request=request)
 
     def validate_title(self, value):
         qs = BlogPost.objects.filter(title__iexact=value)

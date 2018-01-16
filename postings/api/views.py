@@ -5,9 +5,8 @@ from .serializers import BlogPostSerializer
 from .permissions import IsOwnerOrReadOnly
 
 class BlogPostAPIView(mixins.CreateModelMixin, generics.ListAPIView):
-    lookup_field            = 'pk'
+    lookup_field = 'pk'
     serializer_class = BlogPostSerializer
-    #queryset = BlogPost.objects.all()
 
     def get_queryset(self):
         queryset = BlogPost.objects.all()
@@ -26,6 +25,9 @@ class BlogPostAPIView(mixins.CreateModelMixin, generics.ListAPIView):
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
+    def get_serializer_context(self, *args, **kwargs):
+        return {"request" : self.request}
+
 
 class BlogPostRudView(generics.RetrieveUpdateDestroyAPIView):
     lookup_field            = 'pk'
@@ -34,6 +36,9 @@ class BlogPostRudView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return BlogPost.objects.all()
+
+    def get_serializer_context(self, *args, **kwargs):
+        return {"request" : self.request}
 
     # def get_object(self):
     #     pk = self.kwargs.get("pk")
