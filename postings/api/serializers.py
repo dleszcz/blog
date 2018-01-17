@@ -10,6 +10,7 @@ class BlogPostSerializer(serializers.ModelSerializer):
             'id',
             'user',
             'title',
+            'lead',
             'content',
             'timestamp',
         ]
