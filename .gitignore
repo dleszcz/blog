@@ -5,3 +5,8 @@ ckeditor/
 postings/migrations/
 rest_framework
 admin/
+upload/
+static_cdn/
+media_cdn/
+utils/
+static/

@@ -103,8 +103,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 
-STATIC_URL = '/static/'
-STATIC_ROOT = '/Users/danielleszczynski/Projekty/dblog/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+STATIC_URL = os.path.join(os.path.dirname(BASE_DIR), 'dblog/static_cdn/')
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'dblog/utils/')
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'dblog/media_cdn/')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (

@@ -1,8 +1,12 @@
 from rest_framework import serializers
 from postings.models import BlogPost
+from pprint import pprint
+
 
 class BlogPostSerializer(serializers.ModelSerializer):
     url = serializers.SerializerMethodField(read_only=True)
+    hero = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = BlogPost
         fields = [
@@ -10,6 +14,7 @@ class BlogPostSerializer(serializers.ModelSerializer):
             'id',
             'user',
             'title',
+            'hero',
             'lead',
             'content',
             'timestamp',
@@ -20,6 +25,11 @@ class BlogPostSerializer(serializers.ModelSerializer):
     def get_url(self, obj):
         request = self.context.get("request")
         return obj.get_api_url(request=request)
+
+    def get_hero(self, obj):
+        request = self.context.get("request")
+        return obj.get_hero_url(request=request)
+
 
     def validate_title(self, value):
         qs = BlogPost.objects.filter(title__iexact=value)

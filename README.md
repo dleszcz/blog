@@ -3,14 +3,16 @@
 
 ```
 manage.py collectstatic
-manage.py miagrate
 manage.py makemigrations
+manage.py miagrate
 manage.py runserver
 ```
 
-server running at port `8000`
+backend running at port `8000`
 
 ---
 
 ## frontend
 #### react
+
+frontend running at port `3000`
