@@ -15,4 +15,10 @@ backend running at port `8000`
 ## frontend
 #### react
 
+```
+cd webapp
+npm run setup
+npm start
+```
+
 frontend running at port `3000`
