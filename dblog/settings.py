@@ -39,11 +39,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'postings',
-    'ckeditor'
+    'ckeditor',
+    'corsheaders'
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -174,3 +176,8 @@ CKEDITOR_CONFIGS = {
     }
 }
 CKEDITOR_ALLOW_NONIMAGE_FILES = False
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+)
+
