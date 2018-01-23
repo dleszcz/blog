@@ -1,20 +1,20 @@
 import { createActions, createReducer } from 'reduxsauce';
 import { Record, List, fromJS } from 'immutable';
 
-export const { Types: MaintainersTypes, Creators: MaintainersActions } = createActions({
+export const { Types: PostsTypes, Creators: PostsActions } = createActions({
   fetch: ['language'],
   fetchSuccess: ['data'],
   fetchError: ['payload'],
-}, { prefix: 'MAINTAINERS_' });
+}, { prefix: 'POSTS_' });
 
-const MaintainersRecord = new Record({
+const PostsRecord = new Record({
   items: List(),
 });
 
-export const INITIAL_STATE = new MaintainersRecord({});
+export const INITIAL_STATE = new PostsRecord({});
 
 const getSuccessHandler = (state = INITIAL_STATE, action) => state.set('items', fromJS(action.data));
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [MaintainersTypes.FETCH_SUCCESS]: getSuccessHandler,
+  [PostsTypes.FETCH_SUCCESS]: getSuccessHandler,
 });

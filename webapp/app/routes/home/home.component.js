@@ -6,7 +6,6 @@ import envConfig from 'env-config';
 import { Link } from 'react-router-dom';
 
 import messages from './home.messages';
-import { MaintainerList } from './maintainerList/maintainerList.component';
 import { LanguageSelector } from './languageSelector/languageSelector.component';
 
 
@@ -14,7 +13,7 @@ export class Home extends PureComponent {
   static propTypes = {
     items: PropTypes.object,
     language: PropTypes.string.isRequired,
-    fetchMaintainers: PropTypes.func.isRequired,
+    fetchPosts: PropTypes.func.isRequired,
     setLanguage: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
@@ -24,13 +23,7 @@ export class Home extends PureComponent {
   };
 
   componentWillMount() {
-    this.props.fetchMaintainers(this.props.language);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.language !== this.props.language) {
-      this.props.fetchMaintainers(nextProps.language);
-    }
+    this.props.fetchPosts();
   }
 
   render() {
@@ -43,9 +36,13 @@ export class Home extends PureComponent {
           <FormattedMessage {...messages.welcome} />
         </h1>
 
-        <div>Environment: {envConfig.name}</div>
+        <div>
+          {this.props.items.map(
+            (post) => (<div key={post.get('id')}>{post.get('title')}</div>)
+          )}
+        </div>
 
-        <MaintainerList items={this.props.items} />
+        <div>Environment: {envConfig.name}</div>
 
         <div>
           <Link to={`${this.props.match.url}/contact`}>Contact</Link>
