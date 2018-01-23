@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 
+import { Contact } from './contact.component';
 import messages from './contant.messages';
 
 export class ContactContainer extends PureComponent {
@@ -12,4 +13,4 @@ export class ContactContainer extends PureComponent {
   }
 }
 
-export default connect(null, null)(ContactContainer);
+export default connect(null, null)(Contact);
