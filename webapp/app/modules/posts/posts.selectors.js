@@ -4,5 +4,9 @@ import { createSelector } from 'reselect';
 const selectPostsDomain = state => state.get('posts');
 
 export const selectPostsItems = createSelector(
-  selectPostsDomain, state => state.get('items')
+  selectPostsDomain, state => state.get('list')
+);
+
+export const selectSinglePost = createSelector(
+  selectPostsDomain, state => state.get('single')
 );

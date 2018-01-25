@@ -10,8 +10,8 @@ import messages from './home.messages';
 
 export class Home extends PureComponent {
   static propTypes = {
-    items: PropTypes.object,
-    fetchPosts: PropTypes.func.isRequired,
+    posts: PropTypes.object,
+    fetchPostsList: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     history: PropTypes.shape({
@@ -20,7 +20,7 @@ export class Home extends PureComponent {
   };
 
   componentWillMount() {
-    this.props.fetchPosts();
+    this.props.fetchPostsList();
   }
 
   render() {
@@ -34,7 +34,7 @@ export class Home extends PureComponent {
         </h1>
 
         <div>
-          {this.props.items.map(
+          {this.props.posts.map(
             (post) => (<div key={post.get('id')}>{post.get('title')}</div>)
           )}
         </div>

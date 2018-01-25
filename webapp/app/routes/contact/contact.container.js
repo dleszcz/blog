@@ -1,16 +1,13 @@
-import React, { PureComponent } from 'react';
-import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { createStructuredSelector } from 'reselect';
 
 import { Contact } from './contact.component';
-import messages from './contant.messages';
 
-export class ContactContainer extends PureComponent {
-  render() {
-    return (
-      <FormattedMessage {...messages.contact} />
-    );
-  }
-}
+const mapStateToProps = createStructuredSelector({
+});
 
-export default connect(null, null)(Contact);
+export const mapDispatchToProps = (dispatch) => bindActionCreators({
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);

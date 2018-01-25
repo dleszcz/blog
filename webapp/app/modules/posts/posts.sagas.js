@@ -8,13 +8,25 @@ export function* fetchPosts() {
   try {
     const { data } = yield api.get('postings/');
 
-    yield put(PostsActions.fetchSuccess(data));
+    yield put(PostsActions.fetchListSuccess(data));
   } catch (e) {
-    yield put(PostsActions.fetchError(e.response ? e.response.data : e));
+    yield put(PostsActions.fetchListError(e.response ? e.response.data : e));
+    yield reportError(e);
+  }
+}
+
+export function* fetchPost( { id } ) {
+  try {
+    const { data } = yield api.get(`postings/${id}/`);
+
+    yield put(PostsActions.fetchSingleSuccess(data));
+  } catch (e) {
+    yield put(PostsActions.fetchSingleError(e.response ? e.response.data : e));
     yield reportError(e);
   }
 }
 
 export default function* PostsSaga() {
-  yield takeLatest(PostsTypes.FETCH, fetchPosts);
+  yield takeLatest(PostsTypes.FETCH_LIST, fetchPosts);
+  yield takeLatest(PostsTypes.FETCH_SINGLE, fetchPost);
 }
