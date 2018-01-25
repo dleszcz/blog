@@ -1,5 +1,4 @@
 .home {
-  padding: 2.5%;
 }
 
 .home__title {
@@ -9,7 +8,6 @@
 
 .home__title-logo {
   @include retina-sprite($logo-desktop-group);
-
   display: inline-block;
   margin-right: 20px;
   vertical-align: middle;

@@ -15,7 +15,12 @@ export class Post extends PureComponent {
   render() {
     return (
       <div className="post">
-        {this.props.post.get('title')}
+        <div className="post__hero" style={{ backgroundImage: `url(${this.props.post.get('hero')})` }}>
+          <div className="post__hero-title">
+            {this.props.post.get('title')}
+          </div>
+        </div>
+
       </div>
     );
   }

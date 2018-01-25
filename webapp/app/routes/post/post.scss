@@ -1,0 +1,30 @@
+.post {
+}
+
+.post__hero {
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(to top, $main-color, transparent);
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.post__hero-title {
+  color: white;
+  font-size: 10rem;
+  padding-right: 5%;
+  z-index: 1;
+}
