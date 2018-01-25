@@ -12,3 +12,26 @@
   margin-right: 20px;
   vertical-align: middle;
 }
+
+.home__posts-container {
+  padding-top: 10%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
+.home__posts-title {
+  color: $main-color;
+}
+
+.home__posts-list-item {
+  padding: 1% 0;
+
+  a {
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
