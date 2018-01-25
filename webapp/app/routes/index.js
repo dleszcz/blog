@@ -4,8 +4,24 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import App from './app.container';
 import Contact from './contact';
 import Home from './home';
-import NotFound from './notFound';
 import Post from './post';
+import { Header } from '../components/header/header.component';
+import { Footer } from '../components/footer/footer.component';
+
+const PrimaryLayout = () => (
+  <div className="primary-layout">
+    <Header />
+    <main>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/contact" exact component={Contact} />
+        <Route path="/post/:id" exact component={Post} />
+        <Redirect to="/" />
+      </Switch>
+    </main>
+    <Footer />
+  </div>
+);
 
 export class RootContainer extends PureComponent {
   render() {
@@ -13,12 +29,7 @@ export class RootContainer extends PureComponent {
       <Switch>
         <Route path="">
           <App>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/contact" component={Contact} />
-              <Route exact path="/post/:id" component={Post} />
-              <Route component={NotFound} />
-            </Switch>
+            <PrimaryLayout />
           </App>
         </Route>
       </Switch>

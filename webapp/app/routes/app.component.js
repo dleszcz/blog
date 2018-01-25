@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { IntlProvider } from 'react-intl';
+import Header from '../components/header/header.component';
 
 
 export class App extends PureComponent {
@@ -32,7 +33,6 @@ export class App extends PureComponent {
           locale="en"
         >
           {React.Children.only(this.props.children)}
-
         </IntlProvider>
       </div>
     );

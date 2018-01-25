@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-
 export class Post extends PureComponent {
   static propTypes = {
     fetchSinglePost: PropTypes.func.isRequired,

@@ -29,18 +29,19 @@ export class Home extends PureComponent {
         <Helmet title="Homepage" />
 
         <h1 className="home__title">
-          <i className="home__title-logo" />
           <FormattedMessage {...messages.welcome} />
         </h1>
-
         <div>
           {this.props.posts.map(
-            (post) => (<div key={post.get('id')}>{post.get('title')}</div>)
+            (post) => (
+              <div key={post.get('id')}>
+                <Link to={`/post/${post.get('id')}`}>
+                  {post.get('title')}
+                </Link>
+              </div>
+            )
           )}
         </div>
-
-        <div>Environment: {envConfig.name}</div>
-
         <div>
           <Link to={'/contact'}>Contact</Link>
         </div>

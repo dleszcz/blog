@@ -16,3 +16,4 @@ webapp/build
 webapp/node_modules
 webapp/stats.json
 webapp/npm-debug.log
+webapp/.idea
