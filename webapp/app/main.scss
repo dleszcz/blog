@@ -1,6 +1,6 @@
 @import "styles/generated/mobile-sprites";
 @import "styles/generated/desktop-sprites";
-
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans|Merriweather+Sans');
 @import "styles/variables";
 @import "styles/global";
 
@@ -19,4 +19,14 @@ html.unsupported {
 
 * {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+
+main {
+  min-height: calc(100vh - #{$footer-height});
 }

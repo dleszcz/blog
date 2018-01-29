@@ -28,16 +28,13 @@ export class Home extends PureComponent {
       <div className="home">
         <Helmet title="Homepage" />
         <div className="home__posts-container">
-          <h1 className="home__posts-title">
-            My posts
-          </h1>
           <div className="home__posts-list">
             {this.props.posts.map(
               (post) => (
-                <div className="home__posts-list-item" key={post.get('id')}>
-                  <Link to={`/post/${post.get('id')}`}>
-                    {post.get('title')}
+                <div className="home__posts-item" key={post.get('id')}>
+                  <Link className="home__posts-item-link" to={`/post/${post.get('id')}`} style={{ backgroundImage: `url(${post.get('hero')})` }}>
                   </Link>
+                  <div className="home__posts-item-title">{post.get('title')}</div>
                 </div>
               )
             )}

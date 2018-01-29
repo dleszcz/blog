@@ -13,7 +13,9 @@ export class Header extends PureComponent {
   render() {
     return (
       <div className="header">
-        <Link className="header__logo" to={'/'} />
+        <div className="header__logo-container">
+          <Link className="header__logo" to={'/'} />
+        </div>
       </div>
     );
   }
