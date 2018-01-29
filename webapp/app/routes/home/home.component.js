@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import envConfig from 'env-config';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 import messages from './home.messages';
 
@@ -23,6 +23,8 @@ export class Home extends PureComponent {
     this.props.fetchPostsList();
   }
 
+  formatDate = (date) => moment(date).format("Do MMMM, HH:mm");
+
   render() {
     return (
       <div className="home">
@@ -32,6 +34,7 @@ export class Home extends PureComponent {
             {this.props.posts.map(
               (post) => (
                 <div className="home__posts-item" key={post.get('id')}>
+                  <div className="home__posts-item-date">{this.formatDate(post.get('timestamp'))}</div>
                   <Link className="home__posts-item-link" to={`/post/${post.get('id')}`} style={{ backgroundImage: `url(${post.get('hero')})` }}>
                   </Link>
                   <div className="home__posts-item-title">{post.get('title')}</div>
