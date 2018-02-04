@@ -10,8 +10,10 @@ import messages from './home.messages';
 
 export class Home extends PureComponent {
   static propTypes = {
-    posts: PropTypes.object,
+    posts: PropTypes.object.isRequired,
+    categories: PropTypes.object.isRequired,
     fetchPostsList: PropTypes.func.isRequired,
+    fetchCategoriesList: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     history: PropTypes.shape({
@@ -21,6 +23,7 @@ export class Home extends PureComponent {
 
   componentWillMount() {
     this.props.fetchPostsList();
+    this.props.fetchCategoriesList();
   }
 
   formatDate = (date) => moment(date).format("Do MMMM, HH:mm");
@@ -29,6 +32,17 @@ export class Home extends PureComponent {
     return (
       <div className="home">
         <Helmet title="Homepage" />
+        <div className="home__filter-container">
+          {this.props.categories.map(
+            (category) => (
+              <div className="home__category" key={category.get('id')}>
+                <div className="home__category">
+                  {category.get('name')}
+                </div>
+              </div>
+            )
+          )}
+        </div>
         <div className="home__posts-container">
           <div className="home__posts-list">
             {this.props.posts.map(

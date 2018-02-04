@@ -10,3 +10,7 @@ export const selectPostsItems = createSelector(
 export const selectSinglePost = createSelector(
   selectPostsDomain, state => state.get('single')
 );
+
+export const selectCategories = createSelector(
+  selectPostsDomain, state => state.get('categories')
+);
