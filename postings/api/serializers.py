@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from postings.models import BlogPost
+from postings.models import BlogPost, Category
 from pprint import pprint
 
 
@@ -18,6 +18,7 @@ class BlogPostSerializer(serializers.ModelSerializer):
             'lead',
             'content',
             'timestamp',
+            'category',
         ]
 
         read_only_fields = ['id', 'user']
@@ -30,7 +31,6 @@ class BlogPostSerializer(serializers.ModelSerializer):
         request = self.context.get("request")
         return obj.get_hero_url(request=request)
 
-
     def validate_title(self, value):
         qs = BlogPost.objects.filter(title__iexact=value)
         if self.instance:
@@ -38,3 +38,14 @@ class BlogPostSerializer(serializers.ModelSerializer):
         if qs.exists():
             raise serializers.ValidationError("This title has already been used")
         return value
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = [
+            'id',
+            'name',
+        ]
+
+        read_only_fields = ['id']

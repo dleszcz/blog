@@ -6,6 +6,19 @@ from ckeditor.fields import RichTextField
 import os
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True)
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
+    def __str__(self):
+        return self.name
+
+
 class BlogPost(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=80, null=True, blank=True)
@@ -13,6 +26,10 @@ class BlogPost(models.Model):
     hero = models.FileField()
     content = RichTextField()
     timestamp = models.DateTimeField(auto_now_add=True)
+    category = models.ManyToManyField(Category)
+
+    def model_callable(self):
+        return self.category.name
 
     def __str__(self):
         return str(self.user.username)
