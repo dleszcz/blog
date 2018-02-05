@@ -14,3 +14,7 @@ export const selectSinglePost = createSelector(
 export const selectCategories = createSelector(
   selectPostsDomain, state => state.get('categories')
 );
+
+export const selectActiveFilter = createSelector(
+  selectPostsDomain, state => state.get('activeFilter')
+);

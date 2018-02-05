@@ -1,6 +1,4 @@
 .header {
-  position: absolute;
-  z-index: 1;
   width: 100%;
 }
 
@@ -17,5 +15,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 100%;
-  margin: 2.5%;
+  position: absolute;
+  z-index: 1;
+  margin: 3vh;
 }

@@ -1,0 +1,49 @@
+.categories-filter {
+  display: flex;
+  flex-direction: row;
+}
+
+.categories-filter__item {
+  margin-right: 10px;
+}
+
+.categories-filter__item-name {
+  border: 1px solid $main-color;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 16px;
+
+  &:hover {
+    background-color: $main-color;
+    color: white;
+  }
+}
+
+.categories-filter__item-name--active {
+  background-color: $main-color;
+  color: white;
+}
+
+Header sass
+.header {
+  width: 100%;
+}
+
+.header__logo {
+  @include retina-sprite($logo-desktop-group);
+  display: block;
+}
+
+.header__logo-container {
+  background-color: white;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  position: absolute;
+  z-index: 1;
+  margin: 3vh;
+}
+
