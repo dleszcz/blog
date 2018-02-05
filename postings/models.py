@@ -22,14 +22,11 @@ class Category(models.Model):
 class BlogPost(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=80, null=True, blank=True)
-    lead = models.CharField(max_length=160, null=True, blank=True)
+    lead = models.CharField(max_length=360, null=True, blank=True)
     hero = models.FileField()
     content = RichTextField()
     timestamp = models.DateTimeField(auto_now_add=True)
-    category = models.ManyToManyField(Category)
-
-    def model_callable(self):
-        return self.category.name
+    categories = models.ManyToManyField(Category)
 
     def __str__(self):
         return str(self.user.username)

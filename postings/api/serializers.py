@@ -18,7 +18,7 @@ class BlogPostSerializer(serializers.ModelSerializer):
             'lead',
             'content',
             'timestamp',
-            'category',
+            'categories',
         ]
 
         read_only_fields = ['id', 'user']
