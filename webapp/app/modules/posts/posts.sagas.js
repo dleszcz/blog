@@ -37,8 +37,20 @@ export function* fetchCategoriesList() {
   }
 }
 
+export function* searchPosts( { query } ) {
+  try {
+    const { data } = yield api.get(`postings/?q=${query}`);
+
+    yield put(PostsActions.searchPostsSuccess(data));
+  } catch (e) {
+    yield put(PostsActions.searchPostsError(e.response ? e.response.data : e));
+    yield reportError(e);
+  }
+}
+
 export default function* PostsSaga() {
   yield takeLatest(PostsTypes.FETCH_LIST, fetchPosts);
   yield takeLatest(PostsTypes.FETCH_SINGLE, fetchPost);
   yield takeLatest(PostsTypes.FETCH_CATEGORIES_LIST, fetchCategoriesList);
+  yield takeLatest(PostsTypes.SEARCH_POSTS, searchPosts);
 }

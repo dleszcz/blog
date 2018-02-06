@@ -32,7 +32,7 @@ export class CategoriesFilter extends PureComponent {
     return (
       <div className="categories-filter">
         <div className="categories-filter__item" onClick={() => this.clearFilter()}>
-          <div className={filterAllClassNames}> all </div>
+          <div className={filterAllClassNames}>All</div>
         </div>
         {this.props.categories.map(
           (category) => (

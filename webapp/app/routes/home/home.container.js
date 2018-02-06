@@ -16,6 +16,7 @@ export const mapDispatchToProps = (dispatch) => bindActionCreators({
   fetchPostsList: PostsActions.fetchList,
   fetchCategoriesList: PostsActions.fetchCategoriesList,
   setActiveFilter: PostsActions.setActiveFilter,
+  searchPosts: PostsActions.searchPosts,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

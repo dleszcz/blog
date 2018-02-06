@@ -25,6 +25,7 @@ export class Home extends PureComponent {
       push: PropTypes.func.isRequired,
     }).isRequired,
     activeFilter: PropTypes.object.isRequired,
+    searchPosts: PropTypes.func.isRequired,
   };
 
   componentWillMount() {
@@ -33,6 +34,12 @@ export class Home extends PureComponent {
   }
 
   formatDate = (date) => moment(date).format("Do MMMM, HH:mm");
+
+  searchInputOnKey = (event) => {
+    if (event.target.value) {
+      this.props.searchPosts(event.target.value);
+    }
+  };
 
   renderPost = (post) => {
     if (this.props.activeFilter === 0 || contains(this.props.activeFilter, post.get('categories').toJS())) {
@@ -43,9 +50,8 @@ export class Home extends PureComponent {
         </Link>
         <div className="home__posts-item-title">{post.get('title')}</div>
       </div>);
-    } else {
-      return null;
     }
+    return null;
   };
 
   render() {
@@ -56,7 +62,11 @@ export class Home extends PureComponent {
           <CategoriesFilter categories={this.props.categories} setActiveFilter={this.props.setActiveFilter} />
           <div>
             <div className="home__search">
-              <input type="text" />
+              <input
+                className="home__search-input"
+                type="text"
+                placeholder="Search..."
+                onKeyUp={this.searchInputOnKey} />
             </div>
           </div>
         </div>

@@ -1,10 +1,13 @@
 .categories-filter {
   display: flex;
   flex-direction: row;
+  max-width: 80%;
+  flex-wrap: wrap;
 }
 
 .categories-filter__item {
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .categories-filter__item-name {

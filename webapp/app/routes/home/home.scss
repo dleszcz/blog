@@ -80,3 +80,19 @@
   padding: 0 3vh 3vh;
   justify-content: space-between;
 }
+
+.home__search-input {
+  height: 2px;
+  border: 1px solid $main-color;
+  border-radius: 20px;
+  padding: 14px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: lighten($main-color, 30%);
+    font-weight: 100;
+  }
+}
