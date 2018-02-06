@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 
 import App from './app.container';
-import Contact from './contact';
 import Home from './home';
 import Post from './post';
 import { Header } from '../components/header/header.component';
@@ -14,7 +13,6 @@ const PrimaryLayout = () => (
     <main>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/contact" exact component={Contact} />
         <Route path="/post/:id" exact component={Post} />
         <Redirect to="/" />
       </Switch>

@@ -1,15 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { contains } from 'ramda';
 import Transition from 'react-transition-group/Transition';
 
 import { CategoriesFilter } from '../../components/categoriesFilter/categoriesFilter.component';
-
-import messages from './home.messages';
 
 
 export class Home extends PureComponent {
@@ -24,7 +21,7 @@ export class Home extends PureComponent {
     history: PropTypes.shape({
       push: PropTypes.func.isRequired,
     }).isRequired,
-    activeFilter: PropTypes.object.isRequired,
+    activeFilter: PropTypes.number.isRequired,
     searchPosts: PropTypes.func.isRequired,
   };
 
